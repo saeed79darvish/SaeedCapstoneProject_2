@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.jaikh.movies.ui.MainActivity">
+
+    <item
+        android:id="@+id/action_popular"
+        android:icon="@drawable/ic_whatshot_white_48dp"
+        android:title="@string/action_popular"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_most_rated"
+        android:icon="@drawable/ic_plus_one_white_48dp"
+        android:title="@string/action_most_rated"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_star_white_48dp"
+        android:title="@string/action_favorite"
+        app:showAsAction="never" />
+
+
+</menu>
