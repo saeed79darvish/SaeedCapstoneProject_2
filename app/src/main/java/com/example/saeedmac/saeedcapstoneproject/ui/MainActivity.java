@@ -40,6 +40,7 @@ import com.example.saeedmac.saeedcapstoneproject.network.ApiClient;
 import com.example.saeedmac.saeedcapstoneproject.network.ApiInterface;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private Movie fMovie;
     private Snackbar snackbar;
     private TextView logout;
+    private String new_status=null;
 
     private FirebaseAuth auth;
 
@@ -147,19 +149,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     }
 
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-
-    }
-
-
     private void showOfflineSnackbar() {
         snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_no_internet, Snackbar.LENGTH_INDEFINITE);
         snackbar.setAction("dismiss", new View.OnClickListener() {
@@ -185,7 +174,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
+    public void onRestoreInstanceState( Bundle savedInstanceState) {
         // Always call the superclass so it can restore the view hierarchy
         super.onRestoreInstanceState(savedInstanceState);
         if (findViewById(R.id.containerDetails) != null)
@@ -194,8 +183,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             tablet = false;
         if (savedInstanceState != null) {
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
-            String new_status = savedInstanceState.getString("STATUS");
-            System.out.println("STATUS RECEIVED IS " + new_status);
+            new_status = savedInstanceState.getString("STATUS");
+
             switch (new_status) {
                 case "popular":
                     displayPopular(savedRecyclerLayoutState);
@@ -249,6 +238,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 snackbar.dismiss();
             }
         }).show();
+
     }
 
     private void displayRated(final Parcelable position) {
@@ -282,6 +272,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 snackbar.dismiss();
             }
         }).show();
+
+
+
     }
 
     private void displayFavorites(final Parcelable position) {

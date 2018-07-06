@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             try {
                 startActivity(new Intent(Login.this, ForgotPassword.class));
             } catch (Exception e) {
-                Snackbar snackbar = Snackbar.make(activity_login, "please enter somthing", Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(activity_login,R.string.empty_error, Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
             finish();
@@ -72,7 +72,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             try {
                 startActivity(new Intent(Login.this, SignUp.class));
             } catch (Exception e) {
-                Snackbar snackbar = Snackbar.make(activity_login, "please enter somthing", Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(activity_login, R.string.empty_error, Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
             finish();
@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             try {
                 loginUser(input_email.getText().toString(), input_password.getText().toString());
             } catch (Exception e) {
-                Snackbar snackbar = Snackbar.make(activity_login, "please enter somthing", Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(activity_login,R.string.empty_error, Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
         }
@@ -100,10 +100,10 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                         if (!task.isSuccessful()) {
                             if (password.length() < 6) {
 
-                                Snackbar snackbar = Snackbar.make(activity_login, "password length must be over 6", Snackbar.LENGTH_SHORT);
+                                Snackbar snackbar = Snackbar.make(activity_login, R.string.password_length, Snackbar.LENGTH_SHORT);
                                 snackbar.show();
                             } else {
-                                Snackbar snackbar = Snackbar.make(activity_login, "you must signup at the first", Snackbar.LENGTH_SHORT);
+                                Snackbar snackbar = Snackbar.make(activity_login,R.string.must_signup, Snackbar.LENGTH_SHORT);
                                 snackbar.show();
                             }
 

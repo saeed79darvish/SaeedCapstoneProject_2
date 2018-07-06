@@ -97,7 +97,7 @@ public class DetailFragment extends Fragment {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Concatenated String " + mContext.getResources().getString(R.string.i_share) + movie_id);
+                System.out.println("Concatenated String ");
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, mContext.getResources().getString(R.string.i_share) + movie_id);

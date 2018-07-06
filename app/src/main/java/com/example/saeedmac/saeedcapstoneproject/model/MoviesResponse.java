@@ -16,6 +16,9 @@ public class MoviesResponse {
 
     private Movie result;
 
+    public MoviesResponse(String most_rated, Object o, Object o1, Object o2) {
+    }
+
     public int getPage() {
         return page;
     }

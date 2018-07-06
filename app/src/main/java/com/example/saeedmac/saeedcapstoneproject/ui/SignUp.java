@@ -56,7 +56,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
             try {
                 startActivity(new Intent(SignUp.this,ForgotPassword.class));
             }catch (Exception e){
-                Snackbar snackbar=Snackbar.make(activity_sign_up,"please enter somthing",Snackbar.LENGTH_SHORT);
+                Snackbar snackbar=Snackbar.make(activity_sign_up,R.string.empty_error,Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
             finish();
@@ -65,7 +65,7 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
            try {
                signUpUser(input_email.getText().toString(),input_pass.getText().toString());
            }catch (Exception e){
-               Snackbar snackbar=Snackbar.make(activity_sign_up,"please enter somthing",Snackbar.LENGTH_SHORT);
+               Snackbar snackbar=Snackbar.make(activity_sign_up,R.string.empty_error,Snackbar.LENGTH_SHORT);
                snackbar.show();
            }
 

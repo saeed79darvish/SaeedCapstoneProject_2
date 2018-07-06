@@ -52,7 +52,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             try {
                 startActivity(new Intent(this, Login.class));
             } catch (Exception e) {
-                Snackbar snackbar = Snackbar.make(activity_forgot, "please enter somthing", Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(activity_forgot,R.string.empty_error, Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
             finish();
@@ -60,7 +60,7 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
             try {
                 resetPassword(input_email.getText().toString());
             } catch (Exception e) {
-                Snackbar snackbar = Snackbar.make(activity_forgot, "please enter somthing", Snackbar.LENGTH_SHORT);
+                Snackbar snackbar = Snackbar.make(activity_forgot, R.string.empty_error, Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
         }
@@ -73,11 +73,11 @@ public class ForgotPassword extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Snackbar snackbar = Snackbar.make(activity_forgot, "we have sent password to email " + email, Snackbar.LENGTH_SHORT);
+                            Snackbar snackbar = Snackbar.make(activity_forgot,R.string.send_password + email, Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         } else {
 
-                            Snackbar snackbar = Snackbar.make(activity_forgot, "Failed to send password", Snackbar.LENGTH_SHORT);
+                            Snackbar snackbar = Snackbar.make(activity_forgot, R.string.send_error_password, Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                     }
