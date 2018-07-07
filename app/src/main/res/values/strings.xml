@@ -50,5 +50,18 @@
     <string name="send_error_password">Failed to send password</string>
     <string name="password_length">password length must be over 6</string>
     <string name="must_signup">you must signup at the first</string>
+    <string name="welcome">WELCOME TO MOVIESAPP</string>
+    <string name="splash_text">MOVIES APP</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="forget_password">forget password?</string>
+    <string name="sign_up">sign up</string>
+    <string name="or">or</string>
+    <string name="password_reset">we just need your registered email to send your password reset instructions</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="reset_password">Reset password</string>
+    <string name="register">Register</string>
+    <string name="already_account">Already account? Login me!</string>
+    <string name="back">back</string>
 
 </resources>

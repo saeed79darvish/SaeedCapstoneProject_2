@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:fontFamily="serif"
-        android:text="MOVIES APP"
+        android:text="@string/splash_text"
         android:textColor="#222222"
         android:textSize="40sp"
         android:textStyle="bold" />
