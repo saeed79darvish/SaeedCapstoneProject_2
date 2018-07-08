@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 
-
 def keystorePropertiesFile = rootProject.file("keystore.properties")
 // Initialize a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
@@ -9,7 +8,6 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
 android {
-
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -28,19 +26,14 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-
-            release {
-                minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-                signingConfig signingConfigs.config
-
-            }
-
-
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
         buildTypes.each {
             it.buildConfigField 'String', 'API_KEY', '"db201c49d395bcef0e9913baa8dcbd56"'
         }
-
     }
 }
 
@@ -62,5 +55,6 @@ dependencies {
     compile 'com.google.firebase:firebase-core:16.0.1'
     compile 'com.google.firebase:firebase-auth:16.0.2'
     implementation 'com.android.support:design:27.1.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
 }
 apply plugin: 'com.google.gms.google-services'
