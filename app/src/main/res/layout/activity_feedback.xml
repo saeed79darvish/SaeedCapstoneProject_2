@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/cd_feedback"
-        android:hint="@string/cd_feedback" />
+       />
 
     <EditText
         android:id="@+id/feedback_email"
