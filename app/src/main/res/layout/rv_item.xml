@@ -11,6 +11,7 @@
         android:adjustViewBounds="true"
         android:minHeight="278dp"
         android:minWidth="185dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/welcome"/>
 
 </LinearLayout>

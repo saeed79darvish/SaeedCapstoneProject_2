@@ -63,6 +63,8 @@
     <string name="register">Register</string>
     <string name="already_account">Already account? Login me!</string>
     <string name="back">back</string>
+    <string name="votes">votes</string>
+    <string name="login">login</string>
 
 
 </resources>

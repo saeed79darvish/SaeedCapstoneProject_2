@@ -219,7 +219,7 @@ public class DetailFragment extends Fragment {
         releaseDate.setText(sMovie.getReleaseDate());
         voteAvg.setText(Double.toString(sMovie.getVoteAverage()));
         plotView.setText(sMovie.getOverview());
-        voteCount.setText(sMovie.getVoteCount() + " votes");
+        voteCount.setText((sMovie.getVoteCount() + getString(R.string.votes)));
         //reviews.setText(sMovie.getReviews().getResults().toString());
 
         System.out.println("isVideoAvailable ? "+sMovie.getVideo());

@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_input_password"
         android:background="#263238"
-        android:text="login" />
+        android:text="@string/login" />
 
     <TextView
         android:id="@+id/login_btn_forgot_password"

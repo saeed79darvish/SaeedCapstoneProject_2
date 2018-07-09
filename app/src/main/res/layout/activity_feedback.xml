@@ -22,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/feedback_text"
         android:contentDescription="@string/cd_email"
-        android:hint="@string/cd_email"
         android:inputType="textEmailAddress" />
 
     <Button
