@@ -65,6 +65,53 @@
     <string name="back">back</string>
     <string name="votes">votes</string>
     <string name="login">login</string>
+    <string name="Okay">Okay!</string>
+
+    <string name="favorites">favorites</string>
+    <string name="popular">popular</string>
+    <string name="most_rated">most_rated</string>
+    <string name="status">STATUS</string>
+    <string name="status_sent">STATUS SENT IS</string>
+    <string name="updateAppWidget">updateAppWidget() called</string>
+    <string name="onUpdate">onUpdate() called</string>
+    <string name="onReceive">onReceive() called</string>
+    <string name="Intent_recieved">Intent recieved - </string>
+    <string name="initCursor">initCursor() called</string>
+    <string name="dismiss">dismiss</string>
+    <string name="Received">Received</string>
+    <string name="Action">Action</string>
+
+    <string name="sMovie">sMovie :</string>
+    <string name="single_movie">single movie</string>
+    <string name="error">error :</string>
+
+    <string name="image.tmdb">https://image.tmdb.org/t/p/w780/</string>
+    <string name="backdrop_path">backdrop path :</string>
+    <string name="image_tmdb185">https://image.tmdb.org/t/p/w185/</string>
+
+    <string name="isVideoAvailable">isVideoAvailable ?</string>
+    <string name="img_youtube">https://img.youtube.com/vi/</string>
+    <string name="hqdefault">/hqdefault.jpg</string>
+    <string name="trailer">trailer :</string>
+    <string name="m_youtube">http://m.youtube.com/watch?v=</string>
+    <string name="results">results</string>
+    <string name="author">author</string>
+    <string name="content">content</string>
+    <string name="Review_By">Review By -</string>
+    <string name="space">------------------------------------------------------------------------------------</string>
+    <string name="videos_p">videos</string>
+
+    <string name="movie_id">movie_id</string>
+    <string name="poster_path">poster_path</string>
+
+    <string name="MOVIE">MOVIE</string>
+    <string name="MOVIE_ID">MOVIE_ID</string>
+    <string name="Concatenated">Concatenated String</string>
+    <string name="text_plain">text/plain</string>
+    <string name="Share_Movie">Share Movie with...</string>
+    <string name="Register_Success">Register Success</string>
+    <string name="Error">Error</string>
+    <string name="logout">Logout</string>
 
 
 </resources>

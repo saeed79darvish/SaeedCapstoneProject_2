@@ -24,7 +24,7 @@ public class DetailActivity extends AppCompatActivity {
 
         long movie_id = intent.getLongExtra("MOVIE_ID", 0);
         Movie movie = (Movie) intent.getSerializableExtra("DATA_MOVIE");
-        System.out.println("Received " + movie_id);
+        System.out.println(getString(R.string.Received) + movie_id);
 
         Bundle mBundle = new Bundle();
         mBundle.putLong("MOVIE_ID", movie_id);
@@ -36,7 +36,7 @@ public class DetailActivity extends AppCompatActivity {
 
         if (!isNetworkAvailable()) {
             snackbar = Snackbar.make(findViewById(R.id.containerDetails), R.string.sb_no_internet, Snackbar.LENGTH_INDEFINITE);
-            snackbar.setAction("dismiss", new View.OnClickListener() {
+            snackbar.setAction(R.string.dismiss, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     snackbar.dismiss();

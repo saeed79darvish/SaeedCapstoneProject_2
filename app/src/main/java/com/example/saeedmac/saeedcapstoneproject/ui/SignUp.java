@@ -83,11 +83,11 @@ public class SignUp extends AppCompatActivity implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (!task.isSuccessful()){
-                            snackbar=Snackbar.make(activity_sign_up,"Error"+task.getException(),Snackbar.LENGTH_SHORT);
+                            snackbar=Snackbar.make(activity_sign_up,getString(R.string.Error)+task.getException(),Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                         else {
-                            snackbar=Snackbar.make(activity_sign_up,"Register Success",Snackbar.LENGTH_SHORT);
+                            snackbar=Snackbar.make(activity_sign_up, R.string.Register_Success,Snackbar.LENGTH_SHORT);
                             snackbar.show();
                         }
                     }

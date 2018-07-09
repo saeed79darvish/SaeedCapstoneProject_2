@@ -27,7 +27,7 @@ public class AppWidget extends AppWidgetProvider {
     }
 
     void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        System.out.println("updateAppWidget() called");
+        System.out.println(context.getString(R.string.updateAppWidget));
         CharSequence widgetText = context.getString(R.string.appwidget_text);
         /*Construct the RemoteViews object*/
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.app_widget);
@@ -50,7 +50,7 @@ public class AppWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
-            System.out.println("onUpdate() called");
+            System.out.println(context.getString(R.string.onUpdate));
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
         /*Intent intent = new Intent(WIDGET_BUTTON);
@@ -84,8 +84,8 @@ public class AppWidget extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        System.out.println("onReceive() called");
-        System.out.println("Intent recieved - " + intent.getLongExtra("MOVIE_ID", 0));
+        System.out.println(context.getString(R.string.onReceive));
+        System.out.println(context.getString(R.string.Intent_recieved) + intent.getLongExtra("MOVIE_ID", 0));
         /*if (intent.getAction().equals(CLICK_ACTION)) {
             //do some really cool stuff here
             System.out.println("Widget Clicked");

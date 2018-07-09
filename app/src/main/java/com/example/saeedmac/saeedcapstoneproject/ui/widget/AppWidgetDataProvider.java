@@ -15,6 +15,7 @@ import com.example.saeedmac.saeedcapstoneproject.database.MovieContentProvider;
 
 import java.util.concurrent.ExecutionException;
 
+
 public class AppWidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
@@ -37,11 +38,7 @@ public class AppWidgetDataProvider implements RemoteViewsService.RemoteViewsFact
         /**This is done because the widget runs as a separate thread
          when compared to the current app and hence the app's data won't be accessible to it
          because I'm using a content provided **/
-        cursor = context.getContentResolver().query(MovieContentProvider.CONTENT_URI,
-                null,
-                null,
-                null,
-                null);
+        cursor = context.getContentResolver().query(MovieContentProvider.CONTENT_URI, null, null, null, null);
         Binder.restoreCallingIdentity(identityToken);
     }
 
@@ -78,14 +75,14 @@ public class AppWidgetDataProvider implements RemoteViewsService.RemoteViewsFact
         RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.rv_item);
         cursor.moveToPosition(i);
         try {
-            Bitmap bitmap = Glide.
+            Bitmap theBitmap = Glide.
                     with(context.getApplicationContext()).
                     load("http://image.tmdb.org/t/p/w185/" + cursor.getString(1))
                     .asBitmap()
                     .into(185, 275) // Width and height
                     .get();
 
-            remoteViews.setImageViewBitmap(R.id.grid_image, bitmap);
+            remoteViews.setImageViewBitmap(R.id.grid_image, theBitmap);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

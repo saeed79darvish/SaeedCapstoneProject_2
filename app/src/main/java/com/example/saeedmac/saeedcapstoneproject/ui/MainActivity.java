@@ -100,15 +100,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                         int id = item.getItemId();
                         switch (id) {
                             case R.id.action_popular:
-                                status = "popular";
+                                status = getString(R.string.popular);
                                 displayPopular(null);
                                 break;
                             case R.id.action_most_rated:
-                                status = "most_rated";
+                                status = getString(R.string.most_rated);
                                 displayRated(null);
                                 break;
                             case R.id.action_favorite:
-                                status = "favorites";
+                                status = getString(R.string.favorites);
                                 displayFavorites(null);
                                 break;
 
@@ -151,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     private void showOfflineSnackbar() {
         snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_no_internet, Snackbar.LENGTH_INDEFINITE);
-        snackbar.setAction("dismiss", new View.OnClickListener() {
+        snackbar.setAction(getString(R.string.dismiss), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 snackbar.dismiss();
@@ -168,8 +168,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
         // Save the user's current game state
-        savedInstanceState.putString("STATUS", status);
-        System.out.println("STATUS SENT IS " + status);
+        savedInstanceState.putString(getString(R.string.status), status);
+        System.out.println(getString(R.string.status_sent) + status);
         savedInstanceState.putParcelable(BUNDLE_RECYCLER_LAYOUT, recyclerView.getLayoutManager().onSaveInstanceState());
     }
 
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             tablet = false;
         if (savedInstanceState != null) {
             Parcelable savedRecyclerLayoutState = savedInstanceState.getParcelable(BUNDLE_RECYCLER_LAYOUT);
-            new_status = savedInstanceState.getString("STATUS");
+            new_status = savedInstanceState.getString(getString(R.string.status));
 
             switch (new_status) {
                 case "popular":
@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     private void displayPopular(final Parcelable position) {
-        status = "popular";
+        status = getString(R.string.popular);
         if (!isNetworkAvailable()) {
             showOfflineSnackbar();
         }
@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
         snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_now_showing_popular, Snackbar.LENGTH_LONG);
-        snackbar.setAction("dismiss", new View.OnClickListener() {
+        snackbar.setAction(R.string.dismiss, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 snackbar.dismiss();
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (!isNetworkAvailable()) {
             showOfflineSnackbar();
         }
-        status = "most_rated";
+        status = getString(R.string.most_rated);
         movies.clear();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MoviesResponse> call = apiService.getTopRatedMovies(API_KEY);
@@ -262,11 +262,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onFailure(Call<MoviesResponse> call, Throwable t) {
                 // Log error here since request failed
-                Log.e("error : ", t.toString());
+                Log.e(getString(R.string.error), t.toString());
             }
         });
         snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_now_showing_rated, Snackbar.LENGTH_LONG);
-        snackbar.setAction("dismiss", new View.OnClickListener() {
+        snackbar.setAction(R.string.dismiss, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 snackbar.dismiss();
@@ -281,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (!isNetworkAvailable()) {
             showOfflineSnackbar();
         }
-        status = "favorites";
+        status = getString(R.string.favorites);
         movies.clear();
         a = 0;
         if (favCursor.moveToFirst()) {
@@ -295,7 +295,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     recyclerView.getLayoutManager().onRestoreInstanceState(position);
             } while (favCursor.moveToNext());
             snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_now_showing_favorites, Snackbar.LENGTH_LONG);
-            snackbar.setAction("dismiss", new View.OnClickListener() {
+            snackbar.setAction(R.string.dismiss, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     snackbar.dismiss();
@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         } else {
             displayPopular(null);
             snackbar = Snackbar.make(findViewById(R.id.fragment), R.string.sb_no_favorites, Snackbar.LENGTH_LONG);
-            snackbar.setAction("Okay!", new View.OnClickListener() {
+            snackbar.setAction(R.string.Okay, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     snackbar.dismiss();
@@ -329,15 +329,15 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         int id = item.getItemId();
         switch (id) {
             case R.id.action_popular:
-                status = "popular";
+                status = getString(R.string.popular);
                 displayPopular(null);
                 break;
             case R.id.action_most_rated:
-                status = "most_rated";
+                status = getString(R.string.most_rated);
                 displayRated(null);
                 break;
             case R.id.action_favorite:
-                status = "favorites";
+                status = getString(R.string.favorites);
                 displayFavorites(null);
                 break;
 

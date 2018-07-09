@@ -88,8 +88,8 @@ public class DetailFragment extends Fragment {
         voteCount = (TextView) rootView.findViewById(R.id.vote_count);
         viewtrailer = (FloatingActionButton) rootView.findViewById(R.id.trailer);
         if (getArguments() != null) {
-            movie = (Movie) getArguments().getSerializable("MOVIE");
-            movie_id = getArguments().getLong("MOVIE_ID");
+            movie = (Movie) getArguments().getSerializable(getString(R.string.MOVIE));
+            movie_id = getArguments().getLong(getString(R.string.MOVIE_ID));
         }
         isFavorite();
 
@@ -97,12 +97,12 @@ public class DetailFragment extends Fragment {
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Concatenated String ");
+                System.out.println(getString(R.string.Concatenated));
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, mContext.getResources().getString(R.string.i_share) + movie_id);
-                sendIntent.setType("text/plain");
-                startActivity(Intent.createChooser(sendIntent, "Share Movie with..."));
+                sendIntent.setType(getString(R.string.text_plain));
+                startActivity(Intent.createChooser(sendIntent, getString(R.string.Share_Movie)));
             }
         });
 
@@ -120,7 +120,7 @@ public class DetailFragment extends Fragment {
                     fab.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite_border));
                     mContext.getContentResolver().delete(MovieContentProvider.CONTENT_URI, Long.toString(movie_id), null);
                     Snackbar.make(view, R.string.sb_removed_favorite, Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                            .setAction(R.string.Action, null).show();
                     AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
                     Intent intent = new Intent(mContext, AppWidget.class);
                     intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
@@ -131,22 +131,22 @@ public class DetailFragment extends Fragment {
                             flag = true;
                             fab.setImageDrawable(ContextCompat.getDrawable(mContext, R.drawable.ic_favorite));
                             ContentValues values = new ContentValues();
-                            values.put("movie_id", movie_id);
-                            values.put("poster_path", sMovie.getPosterPath());
+                            values.put(getString(R.string.movie_id), movie_id);
+                            values.put(getString(R.string.poster_path), sMovie.getPosterPath());
                             getActivity().getContentResolver().insert(MovieContentProvider.CONTENT_URI, values);
                             Snackbar.make(view, R.string.sb_saved_favorite, Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                                    .setAction(R.string.Action, null).show();
                             AppWidgetManager awm = AppWidgetManager.getInstance(mContext);
                             Intent intent = new Intent(mContext, AppWidget.class);
                             intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
                             getActivity().sendBroadcast(intent);
                         } else {
                             Snackbar.make(view, R.string.sb_problem_saving_favorite, Snackbar.LENGTH_LONG)
-                                    .setAction("Action", null).show();
+                                    .setAction(R.string.Action, null).show();
                         }
                     } else {
                         snackbar = Snackbar.make(view, R.string.sb_no_internet, Snackbar.LENGTH_INDEFINITE);
-                        snackbar.setAction("dismiss", new View.OnClickListener() {
+                        snackbar.setAction(getString(R.string.dismiss), new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 snackbar.dismiss();
@@ -173,22 +173,22 @@ public class DetailFragment extends Fragment {
 
     void getData(long movie_id) {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<SingleMovie> call = apiService.getMovieDetails(movie_id, API_KEY, "videos");
+        Call<SingleMovie> call = apiService.getMovieDetails(movie_id, API_KEY, getString(R.string.videos_p));
         call.enqueue(new Callback<SingleMovie>() {
             @Override
             public void onResponse(Call<SingleMovie> call, Response<SingleMovie> response) {
                 int statusCode = response.code();
                 sMovie = response.body();
                 displayData(sMovie);
-                System.out.println("sMovie : " + sMovie.getId());
-                System.out.println("single movie " + call.request().url());
+                System.out.println(getString(R.string.sMovie) + sMovie.getId());
+                System.out.println(getString(R.string.single_movie) + call.request().url());
             }
 
             @Override
             public void onFailure(Call<SingleMovie> call, Throwable t) {
                 // Log error here since request failed
                 //Log.e("error : ", t.toString());
-                Log.e("error : ", t.getMessage());
+                Log.e(getString(R.string.error), t.getMessage());
             }
         });
 
@@ -203,18 +203,18 @@ public class DetailFragment extends Fragment {
     void displayData(SingleMovie sMovie) {
         appbar.setTitle(sMovie.getTitle());
 
-        System.out.println("sMovie : " + sMovie.getTitle());
+        System.out.println(getString(R.string.sMovie) + sMovie.getTitle());
         //Toast.makeText(getActivity(), "Showing " + sMovie.getTitle(), Toast.LENGTH_SHORT).show();
         status.setText(sMovie.getStatus());
         Glide.with(mContext)
-                .load("https://image.tmdb.org/t/p/w780/" + sMovie.getBackdropPath())
+                .load(getString(R.string.image_tmdb) + sMovie.getBackdropPath())
                 .into(imageView);
-        System.out.println("backdrop path : " + sMovie.getBackdropPath());
+        System.out.println(getString(R.string.backdrop_path) + sMovie.getBackdropPath());
         Glide.with(mContext)
-                .load("https://image.tmdb.org/t/p/w185/" + sMovie.getPosterPath())
+                .load(getString(R.string.image_tmdb) + sMovie.getPosterPath())
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imageView2);
-        System.out.println("https://image.tmdb.org/t/p/w185/" + sMovie.getPosterPath());
+        System.out.println(getString(R.string.image_tmdb) + sMovie.getPosterPath());
         Title.setText(sMovie.getTitle());
         releaseDate.setText(sMovie.getReleaseDate());
         voteAvg.setText(Double.toString(sMovie.getVoteAverage()));
@@ -222,17 +222,17 @@ public class DetailFragment extends Fragment {
         voteCount.setText((sMovie.getVoteCount() + getString(R.string.votes)));
         //reviews.setText(sMovie.getReviews().getResults().toString());
 
-        System.out.println("isVideoAvailable ? "+sMovie.getVideo());
+        System.out.println(getString(R.string.isVideoAvailable)+sMovie.getVideo());
         key = sMovie.getVideos().getResults().get(0).getKey();
         Glide.with(mContext)
-                .load("https://img.youtube.com/vi/" + key + "/hqdefault.jpg")
+                .load(getString(R.string.img_youtube) + key + getString(R.string.hqdefault))
                 .fitCenter()
                 .into(trailerview);
-        System.out.println("trailer : " + "http://img.youtube.com/vi/" + key + "/hqdefault.jpg");
+        System.out.println(getString(R.string.trailer) + getString(R.string.img_youtube) + key + getString(R.string.hqdefault));
         viewtrailer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.youtube.com/watch?v=" + key));
+                Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.m_youtube) + key));
                 startActivity(intent1);
             }
         });
@@ -249,13 +249,13 @@ public class DetailFragment extends Fragment {
             resultJSON = task1.execute(movie_id).get();
             if (resultJSON != null) {
                 JSONObject movie = new JSONObject(resultJSON);
-                JSONArray movieDetails = movie.getJSONArray("results");
+                JSONArray movieDetails = movie.getJSONArray(getString(R.string.results));
                 for (int i = 0; i <= 5; i++) {
                     JSONObject mov_reviews = movieDetails.getJSONObject(i);
-                    author[i] = mov_reviews.getString("author");
-                    review[i] = mov_reviews.getString("content");
-                    reviews.append("\nReview By - " + author[i] + "\n" + review[i] + "\n");
-                    reviews.append("------------------------------------------------------------------------------------\n");
+                    author[i] = mov_reviews.getString(getString(R.string.author));
+                    review[i] = mov_reviews.getString(getString(R.string.content));
+                    reviews.append("\n"+getString(R.string.Review_By) + author[i] + "\n" + review[i] + "\n");
+                    reviews.append("\n"+getString(R.string.space));
                 }
             }
         } catch (InterruptedException e) {
